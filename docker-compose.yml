@@ -1,0 +1,42 @@
+services:
+ 
+ #accounts microservice configuration
+ accounts:
+  image: "sankar1305/accunts:v1"
+  container_name: accounts-micro-service
+  ports:
+   - "9595:9595"
+  deploy:
+   resources:
+    limits:
+     memory: 700m
+  networks:
+   - mybank
+   
+ #loans microservice configuration
+ loans:
+  image: "sankar1305/loans:v1"
+  container_name: loans-micro-service
+  ports:
+   - "9689:9689"
+  deploy:
+   resources:
+    limits:
+     memory: 700m
+  networks:
+   - mybank
+ 
+ #cards microservice configuration
+ cards:
+  image: "sankar1305/cards:v1"
+  container_name: cards-micro-service
+  ports:
+   - "9889:9889"
+  deploy:
+   resources:
+    limits:
+     memory: 700m
+     
+networks:
+ mybank:
+  driver: "bridge"
